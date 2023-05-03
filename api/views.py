@@ -13,6 +13,11 @@ def logout_view(request):
     logout(request)
     return HttpResponse("Logged out")
 
+def increment(request):
+    request.user.num_cards[6] += 1
+    request.user.save()
+    return HttpResponse('Viewed')
+
 def get_auth(request):
     if request.user.is_authenticated:
         return HttpResponse('Authenticated')
@@ -24,11 +29,11 @@ def get_csrf(request):
     response.set_cookie('csrftoken', csrf_token)
     return response
 
-def student_api(request: HttpRequest, id:int) -> HttpResponse:
-    student = get_object_or_404(Student, id=id)
-
+def student_api(request: HttpRequest):
+    print(1)
     if request.method == 'GET':
-        return JsonResponse(student.to_dict())
+        print(2)
+        return JsonResponse(request.user.to_dict())
 
 def students_api(request:HttpRequest):
     students = Student.objects.all()

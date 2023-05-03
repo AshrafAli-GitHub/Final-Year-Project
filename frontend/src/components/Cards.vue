@@ -1,7 +1,7 @@
 <template>
     <Carousel v-model="current_card">
         <Slide v-for="card in cards" :key="card.id">
-            <vue-flashcard 
+            <vue-flashcard @click="increment()"
             :front='card.front'
             :back="card.back">
             </vue-flashcard>
@@ -59,6 +59,14 @@ export default({
         let response = await fetch('/api/deck/'+this.id+'/');
         let data = await response.json()
         this.cards = data.cards
+    },
+    async increment(){
+        let response = await fetch('/api/increment/', {
+            method: "PUT",
+            headers: {
+                "X-CSRFToken": this.getCookie(),
+            },
+        });
     },
     async save(){
         let data = {front:this.front, back:this.back}

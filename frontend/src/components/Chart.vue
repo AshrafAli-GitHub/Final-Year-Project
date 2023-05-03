@@ -1,5 +1,5 @@
 <template>
-    <Line :data="data"  />
+    <Line :data="computedData"  />
   </template>
   
   <script lang="ts">
@@ -39,16 +39,46 @@
                 {
                     label: 'Data One',
                     backgroundColor: '#ffffff',
-                    data: [40, 39, 10, 40, 39, 80, 40]
+                    data: [0, 0, 0, 0, 0, 0, 0]
                 }
                 ]
             },
-            options : {
-                responsive: true,
-                maintainAspectRatio: false
-            }
         }
-    }
+    },
+    computed: {
+      computedData() {
+        return {
+          labels: this.data.labels,
+          datasets: [
+            {
+              label: 'Data One',
+              backgroundColor: '#ffffff',
+              data: this.data.datasets[0].data
+            }
+          ]
+        };
+      }
+    },
+    methods:{
+      async get_chart() {
+        let response = await fetch('/api/student/', {
+          method: "GET",
+        })
+        let fetchedData = await response.json();
+        this.data.datasets[0].data = fetchedData.num_cards;
+        let today = new Date();
+        let v = today;
+        today.toLocaleDateString("en-GB");
+        for (let i = 6; i >= 0; i--) {
+          this.data.labels[i] = v.toLocaleDateString("en-GB");
+          v.setDate(v.getDate() - 1);
+        }
+        console.log(this.data);
+    },
+    },
+    async mounted() {
+        await this.get_chart()
+    },
   }
   </script>
   

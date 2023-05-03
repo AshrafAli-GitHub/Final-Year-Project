@@ -27,12 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '34.89.148.111']
 
+CRONJOBS = [
+    ('0 0 * * *', 'api.cron.my_scheduled_job')
+]
 
 AUTH_USER_MODEL = 'api.Student'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'api.apps.ApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',

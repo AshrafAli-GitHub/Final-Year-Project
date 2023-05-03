@@ -3,10 +3,13 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Student(AbstractUser, models.Model):
+    num_cards = models.JSONField(default=[0,0,0,0,0,0,0])
+
     def to_dict(self):
         return{
             'id':self.id,
             'username':self.username,
+            'num_cards':self.num_cards,
         }
     
 class Deck(models.Model):
