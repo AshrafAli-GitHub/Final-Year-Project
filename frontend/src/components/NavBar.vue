@@ -19,7 +19,7 @@
                 <li v-if="auth=='Authenticated'" class="nav-item">
                     <router-link to='/chart'><a class="nav-link" href="#">Chart</a></router-link>
                 </li>
-                <li v-else class="nav-item">
+                <li v-if="auth=='Authenticated'" class="nav-item">
                     <router-link to='/'><a class="nav-link" @click="logout()" href="#">Logout</a></router-link>
                 </li>
                 

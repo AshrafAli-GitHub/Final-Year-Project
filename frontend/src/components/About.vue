@@ -7,7 +7,7 @@
 
         <p class='text-info'>Whether you are a student preparing for a test, a professional learning new skills, or a lifelong learner looking to expand your knowledge, this app is the perfect tool to help you reach your learning goals.</p>
 
-        <p class='text-info'>Our team has worked hard to ensure that this app is accessible and user-friendly, and we are committed to providing ongoing support and updates to enhance your learning experience. So, what are you waiting for? Start using our Flashcards App today and take your learning to the next level!</p>
+        <p class='text-info'>What are you waiting for? Start using our Flashcards App today and take your learning to the next level!</p>
     </div>
 </template>
   
