@@ -1,7 +1,7 @@
 <template>
-    <nav class='navbar navbar-expand-lg navbar-dark fixed-top my-auto p-3'>
+    <nav class='navbar navbar-expand-lg navbar-dark bg-primary fixed-top my-auto p-3'>
         <div class="container">
-            <router-link to='/about'><a class="navbar-brand" href="#">MyFlashCards</a></router-link>
+            <router-link to='/about'><a class="navbar-brand" href="#">MyFlashcards</a></router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
